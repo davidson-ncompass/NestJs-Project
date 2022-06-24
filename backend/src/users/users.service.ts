@@ -16,7 +16,7 @@ export class UsersService {
     },
     {
         id:2,
-        email:'sowndaryakrishnan@ncompass.inc',
+        email:'sowndaryakrishnan@ncompass.in',
         password: 'Krishnarem@27',
         username: 'krishna-ncompass',
         accessToken: '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'

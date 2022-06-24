@@ -1,33 +1,33 @@
 .form {
-    font-family: sans-serif;
+  background-image: url("bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 20px;
-    height: 100vh;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    background-color: #f8f9fd;
-    background-color: white;
+    height: 80vh;
     padding: 2rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: flex;
-    font-size: 25px;
+   font-size: 25px;
     margin-bottom: 20px;
   }
   
   input[type="text"],
-  input[type="password"] {
+  input[type="password"],input[type="email"]  {
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.2);
   }
-  
+
   input[type="submit"] {
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
+    background: rgb(29, 43, 69);;
+    border: 1px solid #ffffff;
     color: #fff;
     padding: 10px 20px;
   }
@@ -48,3 +48,26 @@
     gap: 8px;
     margin: 10px;
   }
+
+  h1{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(29, 43, 69);
+  font-size: 200%;
+  }
+
+  
+  body{
+  background-image: url("bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navigate{
+  background-color: black;
+}
+.log{
+  background-color:#ffffff;
+}

@@ -23,7 +23,7 @@ import * as redisStore from 'cache-manager-redis-store'
     host: 'localhost',
     port:3306,
     username: 'root',
-    password: 'unlock',
+    password: 'test',
     database: 'nestjs',
     entities: [Repo],
     synchronize: true

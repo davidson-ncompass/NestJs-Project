@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
   
 // import Home component
-import Home from "./components/Home";
+// import Home from "./components/Home";
 import Login from "./components/Login";
 import Fetch from "./components/Fetch";
   
@@ -19,9 +19,7 @@ function App() {
       <Router>
           <Routes>
 
-          <Route exact path="/" element={<Home></Home>} />
-            
-          <Route path="/login" element={<Login></Login>} />
+          <Route exact path="/" element={<Login></Login>} />
             
           <Route path="/fetch" element={<Fetch></Fetch>} />
 
