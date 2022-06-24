@@ -16,18 +16,23 @@ export class RepositoryService {
   async getRepositories(user: any) {
     let repositories;
     repositories = await this.cacheManager.get('repositories');
-    console.log(repositories);
-    if (repositories.length == 0 || repositories[0].email != user.email) {
+    if (repositories.length === 0 || repositories[0].email !== user.email) {
       const repository = await this.repositoryService.find({
         where: { email: user.email },
       });
-      console.log(repository);
       await this.cacheManager.set('repositories', repository, { ttl: 100000 });
-
       repositories = await this.cacheManager.get('repositories');
       console.log('Cache not hit');
     }
-
     return repositories;
+  }
+
+  async fetchAllRepositories() {
+    const result = await this.repositoryService.find();
+    if (result.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
