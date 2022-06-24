@@ -4,10 +4,6 @@ import Navigator from './Navigate';
 export default function Fetch() {
 
   const [first, setfirst] = useState([])
-
-
-  
-
   
 
   const data1 = () => {
