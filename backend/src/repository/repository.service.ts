@@ -24,4 +24,13 @@ export class RepositoryService {
         }
         return repositories;
       }
+
+      async fetchAllRepositories(){
+        const result = await this.repositoryService.find();
+        if(result.length === 0){
+          return false ;
+        }else{
+          return true;
+        }
+      }
 }
