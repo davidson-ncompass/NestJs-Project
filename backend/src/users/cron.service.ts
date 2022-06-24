@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repo } from 'src/repository/entities/repository.entity';
-import { RepositoryService } from 'src/repository/repository.service';
 import { Repository } from 'typeorm';
 import { UsersService } from './users.service';
 

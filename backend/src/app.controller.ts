@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { CacheInterceptor, Controller, Get, Post, Request, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
@@ -15,6 +15,7 @@ export class AppController {
     return token;
   }
 
+  // @UseInterceptors(CacheInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('/repositories')
   async getRepositories(@Request() req){
