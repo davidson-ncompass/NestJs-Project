@@ -7,27 +7,32 @@ import { AuthModule } from './auth/auth.module';
 import { Repo } from './repository/entities/repository.entity';
 import { RepositoryModule } from './repository/repository.module';
 import { UsersModule } from './users/users.module';
-import * as redisStore from 'cache-manager-redis-store'
+import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
   imports: [
     CacheModule.register({
       store: redisStore,
-      socket:{
+      socket: {
         host: 'localhost',
-        port: 6379
-      }
+        port: 6379,
+      },
     }),
     TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port:3306,
-    username: 'root',
-    password: 'unlock',
-    database: 'nestjs',
-    entities: [Repo],
-    synchronize: true
-  }),UsersModule, RepositoryModule,  AuthModule, JwtModule],
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'test',
+      database: 'nestjs',
+      entities: [Repo],
+      synchronize: true,
+    }),
+    UsersModule,
+    RepositoryModule,
+    AuthModule,
+    JwtModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

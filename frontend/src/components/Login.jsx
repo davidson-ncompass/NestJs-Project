@@ -36,17 +36,18 @@ export default function Login() {
     };
   
     return (
-      <div className="form">
+      <div className="form" >
+        
         <h1>Login Form</h1>
         <form onSubmit={handleSubmit}>
           <div className="input-container">
             <label>Username </label>
-            <input type="email" name="uname" required  onChange={(e)=>{setUserName(e.target.value); setError("")}} value={userName}/>
+            <input type="email" placeholder='Enter Your Email Id'  name="uname" required  onChange={(e)=>{setUserName(e.target.value); setError("")}} value={userName}/>
             {/* {renderErrorMessage("uname")} */}
           </div>
           <div className="input-container">
             <label>Password </label>
-            <input type="password" name="pass" required onChange={(e)=>{setpassWord(e.target.value); setError("")}} value={passWord} />
+            <input type="password" name="pass" placeholder='Enter Your Password'  required onChange={(e)=>{setpassWord(e.target.value); setError("")}} value={passWord} />
             {/* {renderErrorMessage("pass")} */}
           </div>
           {error ? <p style={{color: 'red',backgroundColor: '#ffb2b2', fontSize: 15, padding: 3, borderRadius: 7}}>Check your Email or Password!</p> : null} 

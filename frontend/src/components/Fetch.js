@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';Y
-import Navigator from './Navigate';
 export default function Fetch() {
+  const Navigate = useNavigate();
+
+  const logout = async(event) => {
+
+      event.preventDefault();
+  
+       Navigate('/', {replace: true});
+  
+       console.log("lol")
+    }
 
   const [first, setfirst] = useState([])
   
@@ -35,16 +45,17 @@ export default function Fetch() {
   return (
 
     <>
-    <Navigator></Navigator>
     <div>
- 
-<table>
-    <thead><tr>
-      <th>id</th>
-      <th>username</th>
-      <th>repository_name</th>
-      <th>repository_url</th>
-      <th>email_id</th>
+ <br>
+ </br>
+ <br></br>
+<table id='customers'>
+    <thead><tr className='table-row'>
+      <th className='table-header'>Id</th>
+      <th className='table-header' >User's Name</th>
+      <th className='table-header' >Repository Name</th>
+      <th className='table-header' >URL of Repositories</th>
+      <th className='table-header' >User's Email</th>
       </tr></thead>
 <tbody> {first.map( (e) => {
   return <tr>
@@ -58,6 +69,9 @@ export default function Fetch() {
 }  ) } </tbody>
 
     </table>
+    <br></br>
+    <br></br>
+    <div className='button-container' ><button className='button-85' onClick={logout} >LOG OUT</button></div>
 </div>
     </>
 

@@ -15,6 +15,6 @@ export default function Navigate() {
          console.log("lol")
       }
   return (
-    <div className='navigate' > <button className='log' onClick={logout}>Logout</button></div>
+    <div className='navigate' > <button className='button-83' onClick={logout}>Logout</button></div>
   )
 }
