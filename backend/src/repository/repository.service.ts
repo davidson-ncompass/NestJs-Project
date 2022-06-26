@@ -16,7 +16,7 @@ export class RepositoryService {
   async getRepositories(user: any) {
     let repositories;
     repositories = await this.cacheManager.get('repositories');
-    if (repositories.length === 0 || repositories[0].email !== user.email) {
+    if (!repositories|| repositories[0].email !== user.email) {
       const repository = await this.repositoryService.find({
         where: { email: user.email },
       });
