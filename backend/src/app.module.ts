@@ -8,26 +8,26 @@ import { Repo } from './repository/entities/repository.entity';
 import { RepositoryModule } from './repository/repository.module';
 import { UsersModule } from './users/users.module';
 import * as redisStore from 'cache-manager-redis-store';
-import { WinstonModule } from 'nest-winston';
-import * as winston from 'winston';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     CacheModule.register({
       store: redisStore,
       socket: {
-        host: 'localhost',
+        host: process.env.HOST,
         port: 6379,
       },
     }),
     
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: process.env.HOST,
       port: 3306,
-      username: 'root',
-      password: 'unlock',
-      database: 'nestjs',
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [Repo],
       synchronize: true,
     }),

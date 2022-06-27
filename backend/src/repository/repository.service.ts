@@ -20,7 +20,7 @@ export class RepositoryService {
       const repository = await this.repositoryService.find({
         where: { email: user.email },
       });
-      await this.cacheManager.set('repositories', repository, { ttl: 100000 });
+      await this.cacheManager.set('repositories', repository, { ttl: 3600 });
       repositories = await this.cacheManager.get('repositories');
       console.log('Cache not hit');
     }
