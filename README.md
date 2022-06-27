@@ -6,6 +6,7 @@ Use github email in login page to get your repositories.
 ```
 # start server
 npm start or npm run start:dev in development
+sudo service redis-server start
 ```
 ## How to test
 Install [Postman](https://www.getpostman.com/)
