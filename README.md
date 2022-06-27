@@ -24,6 +24,7 @@ Route      | Method | Description
 -----------|--------|--------------------
 /repositories  | GET    | read repo (Authentication needed)
 #### POST http://localhost:3000
+Screenshot:
 ![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.png?raw=true)
 ##### HTTP Request Body Example
 ```json
@@ -40,6 +41,8 @@ In place of **** => give ur respective email and password
 }
 ```
 #### get http://localhost:3000/repositories
+Screenshot:
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/user-details.png?raw=true)
 ##### TOKEN 
  BEARER TOKEN in authorization header
 ##### HTTP Request Body Example
