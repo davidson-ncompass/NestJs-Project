@@ -10,7 +10,6 @@ export default function Fetch() {
   
        Navigate('/', {replace: true});
   
-       console.log("lol")
     }
 
   const [first, setfirst] = useState([])
@@ -18,7 +17,7 @@ export default function Fetch() {
 
   const data1 = () => {
     const getToken = localStorage.getItem('token')
-  fetch("http://localhost:3000/repositories", {
+  fetch("http://52.65.9.30:3030/repositories", {
     method: "GET",
     headers: {
       'Accept': 'application/json',
@@ -31,7 +30,6 @@ export default function Fetch() {
 
     setfirst(data)
 
-    console.log(data);
   })
 
   }

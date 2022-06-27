@@ -13,7 +13,7 @@ export default function Login() {
         const val = {
           email:userName,password:passWord
         }
-        const url = 'http://localhost:3000/login';
+        const url = 'http://52.65.9.30:3030/';
         fetch(url,{
             headers:{
               'Content-Type': 'application/json'
@@ -26,7 +26,11 @@ export default function Login() {
         })
         .then(res =>{ return res.json()})
         .then(data => {
-          if(data.statusCode && data.statusCode === 401){
+          if(data.statusCode && data.statusCode === 403){
+            setError(true);
+            return
+          }
+          if(data.statusCode && data.statusCode === 404){
             setError(true);
             return
           }
