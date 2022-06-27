@@ -17,7 +17,7 @@ export default function Fetch() {
 
   const data1 = () => {
     const getToken = localStorage.getItem('token')
-  fetch("http://52.65.9.30:3030/repositories", {
+  fetch("http://localhost:3000/repositories", {
     method: "GET",
     headers: {
       'Accept': 'application/json',
