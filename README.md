@@ -46,16 +46,18 @@ Screenshot:
 ##### TOKEN 
  BEARER TOKEN in authorization header
 ##### HTTP Request Body Example
-Repo details will be fetched after logingin
+Repo details will be fetched after logging in
 ##### HTTP Response Body Example
 ```json
 {
-    {
     [
         {
-            
+        "id": 490149589,
+        "username": "davidson-ncompass",
+        "repository_name": "demo",
+        "repository_url": "https://api.github.com/users/davidson-ncompass/repos",
+        "email": "davidson@ncompass.in
         }
     ]
-}
 }
 ```
