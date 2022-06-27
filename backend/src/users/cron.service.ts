@@ -1,29 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repo } from 'src/repository/entities/repository.entity';
 import { RepositoryService } from 'src/repository/repository.service';
 import { Repository } from 'typeorm';
 import { UsersService } from './users.service';
+import { Logger } from 'winston';
 
 @Injectable()
 export class CronService {
     constructor(
         private readonly userService: UsersService,
+        @Inject('winston')
+        private readonly logger: Logger,
         @InjectRepository(Repo)
         private userRepository: Repository<Repo>,
         private repositoryService: RepositoryService,
         ){
             this.repositoryService.fetchAllRepositories().then(data =>{
                 if(!data){
+                    this.logger.info("No repositories found in database fetching repositories");
                     this.fetchRepositories()
                 }
+            }).catch(err =>{
+                this.logger.debug(err)
             });
         }
 
     @Cron('0 1 * * *')
     async fetchRepositories(){
+        console.log('Cron running')
+        this.logger.info("Corn service started!")
         const repositories = await this.userService.fetchRepositories();
+        if(repositories.length === 0){
+            this.logger.debug("Repositories not found!");
+            return;
+        }
+        this.logger.info("Repositories fetched!");
         repositories.map(repo=>{
             const data = {
                 id: repo.repositoryDetail.repositoryId,
@@ -34,5 +47,6 @@ export class CronService {
             }
             this.userRepository.save(data);
         })
+        this.logger.info("Repositories fetched and stored into database")
     }
 }

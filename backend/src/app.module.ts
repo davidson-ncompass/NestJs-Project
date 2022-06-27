@@ -8,6 +8,8 @@ import { Repo } from './repository/entities/repository.entity';
 import { RepositoryModule } from './repository/repository.module';
 import { UsersModule } from './users/users.module';
 import * as redisStore from 'cache-manager-redis-store';
+import { WinstonModule } from 'nest-winston';
+import * as winston from 'winston';
 
 @Module({
   imports: [
@@ -18,12 +20,13 @@ import * as redisStore from 'cache-manager-redis-store';
         port: 6379,
       },
     }),
+    
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'test',
+      password: 'unlock',
       database: 'nestjs',
       entities: [Repo],
       synchronize: true,
