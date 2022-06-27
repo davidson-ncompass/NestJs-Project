@@ -18,14 +18,14 @@ HTTP route prefix : http://localhost:3000
 ### USER
 Route      | Method | Description
 -----------|--------|--------------------
-/login         | post    | to get access token
+/         | post    | to get access token
 ### Repo
 Route      | Method | Description
 -----------|--------|--------------------
 /repositories  | GET    | read repo (Authentication needed)
-#### POST http://localhost:3000/login
+#### POST http://localhost:3000
 ##### HTTP Request Body Example
-```javascript
+```json
 {
     "EMAIL" : "****@gmail.com",
     "PASSWORD" : "****"
@@ -33,7 +33,7 @@ Route      | Method | Description
 In place of **** => give ur respective email and password
 ```
 ##### HTTP Response Body Example
-```javascript
+```json
 {
     "access_token" : "**************************************************************************"
 }
@@ -44,7 +44,7 @@ In place of **** => give ur respective email and password
 ##### HTTP Request Body Example
 Repo details will be fetched after logingin
 ##### HTTP Response Body Example
-```javascript
+```json
 {
     {
     [
