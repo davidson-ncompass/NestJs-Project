@@ -8,7 +8,7 @@ import { RepositoryService } from './repository/repository.service';
 export class AppController {
   constructor(private readonly authService: AuthService, private repositoryService: RepositoryService) {}
 
-  @Post('/')
+  @Post('/login')
   @UseGuards(LocalAuthGuard)
   login(@Request() req) {
     const token = this.authService.login(req.user)

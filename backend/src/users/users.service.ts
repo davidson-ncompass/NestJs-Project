@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { firstValueFrom, map } from 'rxjs';
 import { Logger } from 'winston';
 
 @Injectable()
@@ -32,31 +33,29 @@ export class UsersService {
   }
 
   async fetchRepositories() {
-    const repo = [];
+    let repo=[];
     for (let i = 0; i < this.users.length; i++) {
       const url = `https://api.github.com/users/${this.users[i].username}/repos`;
-      await this.httpService
-        .get(url)
-        .toPromise()
-        .then((res) => {
-          for (let j = 0; j < res.data.length; j++) {
-            const repoDetails = {
-              repositoryOwner: res.data[j].owner.login,
-              email: this.users[i].email,
-              repositoryDetail: {
-                repositoryId: res.data[j].id,
-                repositoryName: res.data[j].name,
-                repositoryUrl: res.data[j].owner.repos_url,
-              },
-            };
-            repo.push(repoDetails);
-          }
-        })
-      .catch((err) => {
-        this.logger.error(err.response.data.message); 
-        throw new NotFoundException("Not found")
-      });
+      const response = await firstValueFrom(this.httpService.get(url));
+      repo.push(await this.mapRepositories(response.data, this.users[i].email))
     }
     return repo;
+  }
+
+  async mapRepositories(res, userEmail){
+    let repo = [];
+    for (let j = 0; j < res.length; j++) {
+        const repoDetails = {
+          repositoryOwner: res[j].owner.login,
+          email: userEmail,
+          repositoryDetail: {
+            repositoryId: res[j].id,
+            repositoryName: res[j].name,
+            repositoryUrl: res[j].owner.repos_url,
+          },
+        };
+        repo.push(repoDetails)
+      }
+      return repo;
   }
 }

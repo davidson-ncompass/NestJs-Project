@@ -38,16 +38,19 @@ export class CronService {
             throw new NotFoundException("Repositories not found in database")
         }
         this.logger.info("Repositories fetched!");
-        repositories.map(repo=>{
-            const data = {
-                id: repo.repositoryDetail.repositoryId,
-                repository_name: repo.repositoryDetail.repositoryName,
-                repository_url: repo.repositoryDetail.repositoryUrl,
-                username: repo.repositoryOwner,
-                email: repo.email,
-            }
-            this.userRepository.save(data);
-        })
+        for(let i = 0; i < repositories.length; i++){
+            repositories[i].map(repo=>{
+                const data = {
+                    id: repo.repositoryDetail.repositoryId,
+                    repository_name: repo.repositoryDetail.repositoryName,
+                    repository_url: repo.repositoryDetail.repositoryUrl,
+                    username: repo.repositoryOwner,
+                    email: repo.email,
+                }
+                this.userRepository.save(data);
+            })
+        }
+        
         this.logger.info("Repositories fetched and stored into database")
     }
 }

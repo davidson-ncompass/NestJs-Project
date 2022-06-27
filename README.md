@@ -14,11 +14,14 @@ Install [Postman](https://www.getpostman.com/)
 ## API endpoints
 HTTP route prefix : http://localhost:3000
 
+## Architecture Diagram
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/System%20Architecture.jpg?raw=true)
+
 ### API endpoints summary
 ### USER
 Route      | Method | Description
 -----------|--------|--------------------
-/         | post    | to get access token
+/login         | post    | to get access token
 ### Repo
 Route      | Method | Description
 -----------|--------|--------------------
