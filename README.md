@@ -4,9 +4,13 @@ Use github email in login page to get your repositories.
 
 ## How to run
 ```
-# start server
+# start server(Backend)
 npm start or npm run start:dev in development
 sudo service redis-server start
+
+# start server(Frontend)
+npm start
+
 ```
 ## How to test
 Install [Postman](https://www.getpostman.com/)
@@ -55,11 +59,11 @@ Repo details will be fetched after logging in
 {
     [
         {
-        "id": 490149589,
-        "username": "davidson-ncompass",
-        "repository_name": "demo",
-        "repository_url": "https://api.github.com/users/davidson-ncompass/repos",
-        "email": "davidson@ncompass.in
+        "id": your_repository_id,
+        "username": "your_username",
+        "repository_name": "repository_name",
+        "repository_url": "https://api.github.com/users/****-****/repos",
+        "email": "your_emailId"
         }
     ]
 }
