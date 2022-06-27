@@ -13,7 +13,7 @@ export default function Login() {
         const val = {
           email:userName,password:passWord
         }
-        const url = 'http://52.65.9.30:3030/';
+        const url = 'http://localhost:3000/';
         fetch(url,{
             headers:{
               'Content-Type': 'application/json'
