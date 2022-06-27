@@ -1,9 +1,15 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { NotFoundError } from 'rxjs';
+import { Logger } from 'winston';
 
 @Injectable()
 export class UsersService {
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    @Inject('winston')
+    private logger: Logger,
+    ) {}
 
   private users = [
     {
@@ -47,7 +53,10 @@ export class UsersService {
             repo.push(repoDetails);
           }
         })
-        .catch((err) => console.log(err));
+      .catch((err) => {
+        this.logger.error(err.response.data.message); 
+        throw new NotFoundException("Not found")
+      });
     }
     return repo;
   }

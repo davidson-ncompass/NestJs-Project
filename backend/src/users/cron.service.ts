@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repo } from 'src/repository/entities/repository.entity';
@@ -23,7 +23,8 @@ export class CronService {
                     this.fetchRepositories()
                 }
             }).catch(err =>{
-                this.logger.debug(err)
+                this.logger.debug(err);
+                throw new HttpException("Server Error",400)
             });
         }
 
@@ -34,7 +35,7 @@ export class CronService {
         const repositories = await this.userService.fetchRepositories();
         if(repositories.length === 0){
             this.logger.debug("Repositories not found!");
-            return;
+            throw new NotFoundException("Repositories not found in database")
         }
         this.logger.info("Repositories fetched!");
         repositories.map(repo=>{
