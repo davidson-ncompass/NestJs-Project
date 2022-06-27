@@ -17,12 +17,12 @@ HTTP route prefix : http://localhost:3000
 ### USER
 Route      | Method | Description
 -----------|--------|--------------------
-/          | post    | to get access token
+/login         | post    | to get access token
 ### Repo
 Route      | Method | Description
 -----------|--------|--------------------
 /repositories  | GET    | read repo (Authentication needed)
-#### POST http://localhost:3000
+#### POST http://localhost:3000/login
 ##### HTTP Request Body Example
 ```javascript
 {
