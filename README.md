@@ -24,6 +24,7 @@ Route      | Method | Description
 -----------|--------|--------------------
 /repositories  | GET    | read repo (Authentication needed)
 #### POST http://localhost:3000
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.jpg?raw=true)
 ##### HTTP Request Body Example
 ```json
 {
