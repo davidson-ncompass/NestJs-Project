@@ -13,11 +13,7 @@ export default function Login() {
         const val = {
           email:userName,password:passWord
         }
-<<<<<<< HEAD
         const url = 'http://localhost:3000/login';
-=======
-        const url = 'http://localhost:3000/';
->>>>>>> e40a13b (Done modifications on system architecture design and README file)
         fetch(url,{
             headers:{
               'Content-Type': 'application/json'
