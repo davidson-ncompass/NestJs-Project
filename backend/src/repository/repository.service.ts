@@ -22,15 +22,12 @@ export class RepositoryService {
     let repositories;
     repositories = await this.cacheManager.get('repositories');
     if (!repositories || repositories[0].email !== user.email) {
-      const repository = await this.repositoryService.find({
-        where: { email: user.email },
-      });
+      const repository = await this.repositoryService.find({ where: { email: user.email }});
       if (repository.length === 0) {
         throw new NotFoundException('No repositories found');
       }
       await this.cacheManager.set('repositories', repository, { ttl: 3600 });
       repositories = await this.cacheManager.get('repositories');
-      console.log('Cache not hit');
     }
     return {
       success: true,

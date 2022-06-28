@@ -51,7 +51,7 @@ export class UsersService {
         repositoryDetail: {
           repositoryId: res[j].id,
           repositoryName: res[j].name,
-          repositoryUrl: res[j].owner.repos_url,
+          repositoryUrl: res[j].html_url
         },
       };
       repo.push(repoDetails);
