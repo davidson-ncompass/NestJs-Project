@@ -29,7 +29,6 @@ export default function Fetch() {
   .then(data => {
 
     setfirst(data.data)
-console.log(data.data)
   })
   }
 
