@@ -1,4 +1,9 @@
-import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import {
+  CACHE_MANAGER,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cache } from 'cache-manager';
 import { Repository } from 'typeorm';
@@ -20,11 +25,18 @@ export class RepositoryService {
       const repository = await this.repositoryService.find({
         where: { email: user.email },
       });
+      if (repository.length === 0) {
+        throw new NotFoundException('No repositories found');
+      }
       await this.cacheManager.set('repositories', repository, { ttl: 3600 });
       repositories = await this.cacheManager.get('repositories');
       console.log('Cache not hit');
     }
-    return repositories;
+    return {
+      success: true,
+      message: 'Fetched User Repositories',
+      data: repositories,
+    };
   }
 
   async fetchAllRepositories() {
