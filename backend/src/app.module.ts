@@ -20,7 +20,7 @@ import { ConfigModule } from '@nestjs/config';
         port: 6379,
       },
     }),
-    
+
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.HOST,

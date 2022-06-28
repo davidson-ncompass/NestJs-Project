@@ -8,7 +8,7 @@ export class UsersService {
     private httpService: HttpService,
     @Inject('winston')
     private logger: Logger,
-    ) {}
+  ) {}
 
   private users = [
     {
@@ -52,10 +52,10 @@ export class UsersService {
             repo.push(repoDetails);
           }
         })
-      .catch((err) => {
-        this.logger.error(err.response.data.message); 
-        throw new NotFoundException("Not found")
-      });
+        .catch((err) => {
+          this.logger.error(err.response.data.message);
+          throw new NotFoundException('Not found');
+        });
     }
     return repo;
   }
