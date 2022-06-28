@@ -28,10 +28,9 @@ export default function Fetch() {
   }).then(response => response.json())
   .then(data => {
 
-    setfirst(data)
-
+    setfirst(data.data)
+console.log(data.data)
   })
-
   }
 
   useEffect(() => {
