@@ -158,22 +158,11 @@ This is the LOG-IN page.
 
 
 Use github email in login page to get your repositories.
-```
 ![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.png?raw=true)
 This is the page for showing the Repository list.
-
-
-![1](https://user-images.githubusercontent.com/105263598/175952047-53d55423-16af-4c59-a927-0f8c4bad9800.jpg)
-This is the Architecture Diagram.
-
 
 
 ```
 ## Architecture Diagram
 ![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/System%20Architecture.jpg?raw=true)
-
-
-#### get http://localhost:3000/repositories
-Screenshot:
-![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/user-details.png?raw=true)
 
