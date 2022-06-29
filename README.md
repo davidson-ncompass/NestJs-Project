@@ -162,7 +162,7 @@ Use github email in login page to get your repositories.
 This is the page for showing the Repository list.
 
 
-```
+
 ## Architecture Diagram
 ![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/System%20Architecture.jpg?raw=true)
 
