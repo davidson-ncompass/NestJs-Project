@@ -80,7 +80,6 @@ const pushRepositories = async () =>{
         repositories[index].map(async data =>{
             const values = [data.repositoryId, data.repositoryOwner, data.repositoryName, data.repositoryUrl, data.email, data.contributors];
             const result = await querExecuter(query, values);
-            console.log('all done')
         })
     }
     logger.log({
