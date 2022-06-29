@@ -63,10 +63,10 @@ JWT_SECRET
 
 ## API Reference
 
-#### Get all items
+#### TO LOGIN
 
 ```http
-  POST /user/login
+  POST /login
 ```
 
 | Parameter | Type     | Description                |
@@ -76,10 +76,14 @@ JWT_SECRET
 
 Returns a jwt token on succesful login
 
+Screenshot:
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.png?raw=true)
+```
+
 #### Get item
 
 ```http
-  GET /user/repositories
+  GET /repositories
 ```
 
 | Parameter | Type     | Description                       |
@@ -89,16 +93,11 @@ Returns a jwt token on succesful login
 
 Returns all the repositories for the logged in user
 
-```http
-  GET /user/update-repositories
-```
+#### POST http://localhost:3000
+Screenshot:
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.png?raw=true)
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `JWT token| `string` | **Required**.  |
-
-
-Updates all the repositories in the database
+##FRONTND DESCRIPTION
 
 # Getting Started with Create React App
 
@@ -130,54 +129,11 @@ This is the Architecture Diagram.
 
 Use github email in login page to get your repositories.
 
-## How to run
-```
-# start server(Backend)
-npm start or npm run start:dev in development
-sudo service redis-server start
-
-# start server(Frontend)
-npm start
-
-```
 ## How to test
 Install [Postman](https://www.getpostman.com/)
 
 ## API endpoints
 HTTP route prefix : http://localhost:3000
-
-## Architecture Diagram
-![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/System%20Architecture.jpg?raw=true)
-
-### API endpoints summary
-### USER
-Route      | Method | Description
------------|--------|--------------------
-/login         | post    | to get access token
-### Repo
-Route      | Method | Description
------------|--------|--------------------
-/repositories  | GET    | read repo (Authentication needed)
-#### POST http://localhost:3000
-Screenshot:
-![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.png?raw=true)
-##### HTTP Request Body Example
-```json
-{
-    "EMAIL" : "****@gmail.com",
-    "PASSWORD" : "****"
-}
-In place of **** => give ur respective email and password
-```
-##### HTTP Response Body Example
-```json
-{
-    "access_token" : "**************************************************************************"
-}
-```
-#### get http://localhost:3000/repositories
-Screenshot:
-![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/user-details.png?raw=true)
 ##### TOKEN 
  BEARER TOKEN in authorization header
 ##### HTTP Request Body Example
@@ -196,3 +152,34 @@ Repo details will be fetched after logging in
     ]
 }
 ```
+## Architecture Diagram
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/System%20Architecture.jpg?raw=true)
+
+### API endpoints summary
+### USER
+Route      | Method | Description
+-----------|--------|--------------------
+/login         | post    | to get access token
+### Repo
+Route      | Method | Description
+-----------|--------|--------------------
+/repositories  | GET    | read repo (Authentication needed)
+
+##### HTTP Request Body Example
+```json
+{
+    "EMAIL" : "****@gmail.com",
+    "PASSWORD" : "****"
+}
+In place of **** => give ur respective email and password
+```
+##### HTTP Response Body Example
+```json
+{
+    "access_token" : "**************************************************************************"
+}
+```
+#### get http://localhost:3000/repositories
+Screenshot:
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/user-details.png?raw=true)
+
