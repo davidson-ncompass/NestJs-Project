@@ -10,6 +10,15 @@
 $ npm install
 ```
 
+### CRON
+- [Cron](https://www.npmjs.com/package/node-cron) - cron command-line utility is a job scheduler on Unix-like operating systems. Users who set up and maintain software environments use cron to schedule jobs, also known as cron jobs, to run periodically at fixed times, dates, or intervals.
+
+## How to start redis
+```
+# start redis
+sudo service redis-server start
+```
+
 ## Running the app
 
 ```bash
@@ -129,12 +138,10 @@ Repo details will be fetched after logging in
 #### POST http://localhost:3000
 
 
-
-
 ```
 
 
-##FRONTND DESCRIPTION
+##FRONTEND DESCRIPTION
 
 # Getting Started with Create React App
 
@@ -158,8 +165,7 @@ This is the LOG-IN page.
 
 
 Use github email in login page to get your repositories.
-![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/login.png?raw=true)
-This is the page for showing the Repository list.
+![alt text](https://github.com/davidson-ncompass/NestJs-Project/blob/master/screens/user-details.png?raw=true)
 
 
 
