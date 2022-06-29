@@ -18,7 +18,6 @@ export class AppController {
     return token;
   }
 
-  // @UseInterceptors(CacheInterceptor)
   @UseGuards(JwtAuthGuard)
   @Get('/repositories')
   async getRepositories(@Request() req) {

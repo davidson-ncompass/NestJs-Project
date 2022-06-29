@@ -9,6 +9,9 @@ import { RepositoryModule } from './repository/repository.module';
 import { UsersModule } from './users/users.module';
 import * as redisStore from 'cache-manager-redis-store';
 import { ConfigModule } from '@nestjs/config';
+import { WinstonModule } from 'nest-winston';
+import * as winston from 'winston'
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -20,7 +23,29 @@ import { ConfigModule } from '@nestjs/config';
         port: 6379,
       },
     }),
-
+    WinstonModule.forRoot({
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json(),
+      ),
+      transports: [
+        new winston.transports.File({
+          dirname: './log',
+          filename: 'info.log',
+          level: 'info',
+        }),
+        new winston.transports.File({
+          dirname: './log',
+          filename: 'debug.log',
+          level: 'debug',
+        }),
+        new winston.transports.File({
+          dirname: './log',
+          filename: 'error.log',
+          level: 'error',
+        }),
+      ],
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.HOST,
@@ -28,7 +53,7 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Repo],
+      entities: [Repo,User],
       synchronize: true,
     }),
     UsersModule,
