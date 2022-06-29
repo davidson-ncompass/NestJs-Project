@@ -16,5 +16,7 @@ export class Repo{
     repository_url: string;
 
     @Column()
+    contributors: number;
+    @Column()
     email: string;
 }
