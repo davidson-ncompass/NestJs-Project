@@ -1,34 +1,22 @@
 import "./App.css";
-// importing components from react-router-dom package
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-  
-// import Home component
-// import Home from "./components/Home";
+import {BrowserRouter as Router,Routes,Route,Navigate} from "react-router-dom";
 import Login from "./components/Login";
-import Fetch from "./components/Fetch";
-  
+import Dashboard from "./components/Dashboard";
+
 function App() {
-  return (
-    <>
-      
+  return (  
       <Router>
           <Routes>
 
-          <Route exact path="/" element={<Login></Login>} />
+          <Route exact path="/" element={<Login/>} />
             
-          <Route path="/fetch" element={<Fetch></Fetch>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
 
           <Route path="*" element={<Navigate to ="/" />}/>
 
           </Routes>
           
       </Router>
-    </>
   );
 }
   

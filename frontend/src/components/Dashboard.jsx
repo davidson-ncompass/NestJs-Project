@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';Y
-export default function Fetch() {
-  const Navigate = useNavigate();
+import './Dashboard.css'
 
+export default function Dashboard() {
+  const Navigate = useNavigate();
+  const [repo, setrepo] = useState([])
+  
+  
   const logout = async(event) => {
 
-      event.preventDefault();
-  
        Navigate('/', {replace: true});
   
     }
 
-  const [first, setfirst] = useState([])
-  
-
-  const data1 = () => {
+  const fetchRepo = () => {
     const getToken = localStorage.getItem('token')
-  fetch("http://localhost:3000/repositories", {
+    fetch("http://localhost:3000/repositories", {
     method: "GET",
     headers: {
       'Accept': 'application/json',
@@ -28,12 +26,12 @@ export default function Fetch() {
   }).then(response => response.json())
   .then(data => {
 
-    setfirst(data.data)
+    setrepo(data.data)
   })
   }
 
   useEffect(() => {
-    data1()
+    fetchRepo()
 
   }, [])
   
@@ -47,15 +45,15 @@ export default function Fetch() {
  <br>
  </br>
  <br></br>
-<table id='customers'>
+<table id='table'>
     <thead><tr className='table-row'>
-      <th className='table-header'>Id</th>
-      <th className='table-header'>User's Name</th>
-      <th className='table-header'>Repository Name</th>
-      <th className='table-header'>URL of Repositories</th>
-      <th className='table-header'>User's Email</th>
+      <th>Id</th>
+      <th>User's Name</th>
+      <th>Repository Name</th>
+      <th>URL of Repositories</th>
+      <th>User's Email</th>
       </tr></thead>
-<tbody>{first.map( (e) => {
+<tbody>{repo.map( (e) => {
   return <tr key={e.id} > 
     <td>{e.id}</td>
     <td>{e.username}</td>
@@ -69,7 +67,7 @@ export default function Fetch() {
     </table>
     <br></br>
     <br></br>
-    <div className='button-container'><button className='button-85' onClick={logout}>LOG OUT</button></div>
+    <div className='button-container'><button className='button' onClick={logout}>LOG OUT</button></div>
 </div>
     </>
 

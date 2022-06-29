@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
 import {  useNavigate} from 'react-router-dom';
-import "./styles.css";
+import './Login.css'
 
 export default function Login() {
+  
   const[userName,setUserName] = useState('')
   const[passWord,setpassWord] = useState('');
   const[error, setError] = useState('')
-    const Navigate = useNavigate();
-    const handleSubmit = async(event) => {
+  const Navigate = useNavigate();
+    
+  const handleSubmit = (event) => {
       event.preventDefault();
         const val = {
           email:userName,password:passWord
@@ -34,7 +36,7 @@ export default function Login() {
             setError(true);
             return
           }
-          Navigate('/fetch',{replace: true});
+          Navigate('/dashboard',{replace: true});
           localStorage.setItem('token', data.access_token)
         })
     };
@@ -47,17 +49,15 @@ export default function Login() {
           <div className="input-container">
             <label>Username </label>
             <input type="email" placeholder='Enter Your Email Id'  name="uname" required  onChange={(e)=>{setUserName(e.target.value); setError("")}} value={userName}/>
-            {/* {renderErrorMessage("uname")} */}
           </div>
           <div className="input-container">
             <label>Password </label>
             <input type="password" name="pass" placeholder='Enter Your Password'  required onChange={(e)=>{setpassWord(e.target.value); setError("")}} value={passWord} />
-            {/* {renderErrorMessage("pass")} */}
           </div>
-          {error ? <p style={{color: 'red',backgroundColor: '#ffb2b2', fontSize: 15, padding: 3, borderRadius: 7}}>Check your Email or Password!</p> : null} 
+          {error && <p className='errormessage' id='error' >Check your Email or Password!</p>} 
           <br></br>
           <div className="button-container">
-            <input type="submit" />
+            <button className='button' type='submit' >LOG IN</button>
           </div>
         </form>
       </div>
