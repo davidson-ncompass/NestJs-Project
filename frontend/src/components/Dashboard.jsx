@@ -48,16 +48,16 @@ export default function Dashboard() {
 <table id='table'>
     <thead><tr className='table-row'>
       <th>Id</th>
-      <th>User's Name</th>
       <th>Repository Name</th>
+      <th>No of Contributors</th>
       <th>URL of Repositories</th>
       <th>User's Email</th>
       </tr></thead>
 <tbody>{repo.map( (e) => {
   return <tr key={e.id} > 
     <td>{e.id}</td>
-    <td>{e.username}</td>
     <td>{e.repository_name}</td>
+    <td>{e.contributors}</td>
     <td>{e.repository_url}</td>
     <td>{e.email}</td>
   </tr>
